@@ -1,0 +1,36 @@
+html {
+  margin: 0;
+  font-size: 62.5%;
+  font-family: 'Noto Sans TC', sans-serif; }
+
+.LoginForm {
+  display: flex; }
+  .LoginForm__input {
+    border-radius: 5px;
+    font-size: 2rem; }
+  .LoginForm__label {
+    margin: 1rem; }
+  .LoginForm__submit {
+    border-radius: 5px;
+    color: white;
+    margin: 0rem 1rem;
+    background: #0F2027;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2C5364, #203A43, #0F2027);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
+
+.Navigation {
+  display: flex;
+  justify-content: center; }
+  .Navigation__item {
+    border-radius: 5px;
+    background-color: sandybrown;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    margin: 1rem 2rem; }
+    .Navigation__item:hover {
+      background-color: #203A43;
+      color: wheat; }
