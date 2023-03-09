@@ -1,6 +1,10 @@
 import { useState } from "react";
+function UserException(message) {
+    this.message = message
+}
 
 const LoginForm = (props) => {
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
@@ -27,15 +31,19 @@ const LoginForm = (props) => {
                     password
                 })
             });
-            const { token, data } = await response.json();
-            console.log(token);
-            console.log(data.user);
+
+            const { token, status } = await response.json();
+            if (status === 'fail') {
+                setErrorMessage(errorMessage)
+                throw new UserException('不正確的信箱或密碼');
+            }
             localStorage.setItem('jwt', token);
             props.onLogin();
             setLoading(false);
+
         } catch (err) {
-            setErrorMessage(err);
-            console.log(errorMessage);
+            alert('使用者輸入密碼錯誤');
+            window.location.replace('/');
         }
     }
     if (loading) {
@@ -55,6 +63,7 @@ const LoginForm = (props) => {
                 <input className="LoginForm__input" type='password' id='password' value={password} onChange={passwordHandler} />
             </div>
             <button className='LoginForm__submit' type='button' onClick={LoginHandler}>登入</button>
+            {errorMessage && <p>{errorMessage}</p>}
         </form>
     )
 }
